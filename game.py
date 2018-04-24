@@ -4,11 +4,15 @@ import random
 from color import *
 from snake import Snake
 from food import Food
+from gridDetector import Detector
 
 HEIGHT = 600
 WIDTH = 600
+GRID_CELL_SIZE = 30
+FPS = 12
 
-FPS = 24
+detector = Detector(HEIGHT, WIDTH, GRID_CELL_SIZE)
+
 
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -49,6 +53,7 @@ while running:
         snake.move('down')
 
     snake.update()
+    detector.makeZero()
 
     [hx, hy] = snake.pieces[0]
 
@@ -60,7 +65,8 @@ while running:
         food = Food()
         snake.add()
 
-   
+    #if(screen.get_at((50, 50)) == BLUE):
+    #    print('aa')
 
     screen.fill(BLACK)
     pygame.draw.rect(screen, RED, (food.x, food.y, 30, 30))
@@ -68,5 +74,17 @@ while running:
         pygame.draw.rect(screen, BLUE, (piece[0], piece[1], 30, 30 ))
 
     pygame.display.flip()
+
+    
+    for x in range(0, 20):
+        for y in range(0, 20):
+            if(screen.get_at((x*30 , y*30)) == BLUE):
+                detector.matrix[y][x] = 1
+
+            if(screen.get_at((x*30 , y*30)) == RED):
+                detector.matrix[y][x] = -1
+
+    print(detector.matrix)
+
 
 pygame.quit()
