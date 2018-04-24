@@ -4,9 +4,13 @@ from color import *
 class Snake:
     
     def __init__(self, x, y, screen):
-        self.pieces = [[30, 30]]
         self.x = x
         self.y = y
+        self.reset()
+
+    def reset(self):
+        self.pieces = []
+        self.pieces.append([30, 30])
         self.movement = 2
 
     def update(self):
@@ -47,15 +51,24 @@ class Snake:
 
 
     def move(self, keyPress):
+        
         if keyPress == 'up':
+            if self.movement == 4:
+                return
             self.movement = 1
 
         elif keyPress == 'right':
+            if self.movement == 3:
+                return
             self.movement = 2
 
         elif keyPress == 'left':
+            if self.movement == 2:
+                return
             self.movement = 3
 
         elif keyPress == 'down':
+            if self.movement == 1:
+                return
             self.movement = 4
                 
