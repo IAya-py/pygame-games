@@ -52,12 +52,15 @@ while running:
 
     [hx, hy] = snake.pieces[0]
 
-    if hx < 0 or hy < 0 or hx > HEIGHT-1 or hy > WIDTH-1:
+    if hx < 0 or hy < 0 or hx > HEIGHT-1 or hy > WIDTH-1 or (len([p for p in snake.pieces if p == [hx, hy]])) > 1:
         snake.reset()
+        food = Food()
 
     if hx == food.x and hy == food.y:
         food = Food()
-        
+        snake.add()
+
+   
 
     screen.fill(BLACK)
     pygame.draw.rect(screen, RED, (food.x, food.y, 30, 30))
