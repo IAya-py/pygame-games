@@ -55,8 +55,11 @@ while running:
     if hx < 0 or hy < 0 or hx > HEIGHT-1 or hy > WIDTH-1:
         snake.reset()
 
+    if hx == food.x and hy == food.y:
+        food = Food()
+        
+
     screen.fill(BLACK)
-    print(food.x, food.y)
     pygame.draw.rect(screen, RED, (food.x, food.y, 30, 30))
     for piece in snake.pieces:
         pygame.draw.rect(screen, BLUE, (piece[0], piece[1], 30, 30 ))

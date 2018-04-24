@@ -7,6 +7,3 @@ class Food:
         self.x = random.randint(0, 19) * 30
         self.y = random.randint(0, 19) * 30
 
-
-        
-
