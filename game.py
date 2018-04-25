@@ -20,7 +20,7 @@ pygame.display.set_caption("Cool Snake Hisss")
 clock = pygame.time.Clock()
 
 snake = Snake(screen, 50, 50)
-food = Food()
+food = Food(snake)
 
 running = True
 
@@ -59,14 +59,11 @@ while running:
 
     if hx < 0 or hy < 0 or hx > HEIGHT-1 or hy > WIDTH-1 or (len([p for p in snake.pieces if p == [hx, hy]])) > 1:
         snake.reset()
-        food = Food()
+        food = Food(snake)
 
     if hx == food.x and hy == food.y:
-        food = Food()
+        food = Food(snake)
         snake.add()
-
-    #if(screen.get_at((50, 50)) == BLUE):
-    #    print('aa')
 
     screen.fill(BLACK)
     pygame.draw.rect(screen, RED, (food.x, food.y, 30, 30))
@@ -85,6 +82,5 @@ while running:
                 detector.matrix[y][x] = -1
 
     print(detector.matrix)
-
 
 pygame.quit()

@@ -10,10 +10,3 @@ class Detector:
 
     def makeZero(self):
         self.matrix = [[0] * self.CELL_SIZE_X for i1 in range(self.CELL_SIZE_Y) ]
-
-
-'''
-d1 = Detector(600, 600, 30)
-d1.matrix[1][1] = 3
-print(d1.matrix)
-'''
