@@ -2,8 +2,8 @@ import pygame
 import os
 import random
 from color import *
-from snake import Snake
-from food import Food
+from snake_files.snake import Snake
+from snake_files.food import Food
 from gridDetector import Detector
 
 HEIGHT = 600
@@ -12,7 +12,6 @@ GRID_CELL_SIZE = 30
 FPS = 12
 
 detector = Detector(HEIGHT, WIDTH, GRID_CELL_SIZE)
-
 
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))

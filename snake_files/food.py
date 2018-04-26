@@ -1,5 +1,4 @@
-import pygame
-from snake import *
+from .snake import *
 import random
 
 class Food:

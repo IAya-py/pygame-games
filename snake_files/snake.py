@@ -1,4 +1,3 @@
-import pygame
 from color import *
 
 class Snake:
